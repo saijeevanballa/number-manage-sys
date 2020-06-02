@@ -2,7 +2,7 @@ const userModel = require("./model");
 const numDB = userModel.numSchema;
 
 const getNumbers = async function() {
-  return await numDB.find({ is_active: true });
+  return await numDB.find({ is_active: true }).sort({ updatedAt: -1 });
 };
 module.exports.getNumbers = getNumbers;
 

@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "builds": [{ "src": "main.js", "use": "@now/node-server" }]
+  "name": "whatsfind",
+  "builds": [{ "src": "main.js", "use": "@now/node-server" }],
+  "routes": [{ "src": "/(.*)", "dest": "main.js" }],
+  "env": {
+    "MONGO_URL": "mongodb://localhost:27017/numbers"
+  }
 }
