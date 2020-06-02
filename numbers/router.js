@@ -2,6 +2,14 @@ const Router = require("express");
 const userModule = require("./module");
 const router = Router();
 
+router.get("/hello", async (req, res, next) => {
+  try {
+    res.status(200).send("from router");
+  } catch (error) {
+    next(error);
+  }
+});
+
 // NUmbers Get Method
 router.get("/", async (req, res, next) => {
   try {
