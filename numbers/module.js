@@ -1,8 +1,11 @@
 const userModel = require("./model");
 const numDB = userModel.numSchema;
 
-const getNumbers = async function() {
-  return await numDB.find({ is_active: true }).sort({ updatedAt: -1 });
+const getNumbers = async function(value) {
+  let obj = { is_active: true };
+  if (value) obj = { ...obj, number: new RegExp(value, "i") };
+  console.log(obj, value);
+  return await numDB.find(obj).sort({ updatedAt: -1 });
 };
 module.exports.getNumbers = getNumbers;
 

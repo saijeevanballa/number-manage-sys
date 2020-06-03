@@ -13,7 +13,7 @@ router.get("/hello", async (req, res, next) => {
 // NUmbers Get Method
 router.get("/", async (req, res, next) => {
   try {
-    res.status(200).send(await userModule.getNumbers());
+    res.status(200).send(await userModule.getNumbers(req.query.value));
   } catch (error) {
     next(error);
   }

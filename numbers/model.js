@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema(
   {
-    number: { type: Number, Max: 10, Min: 10 },
+    number: { type: String, Max: 10, Min: 10, unique: true },
     name: { type: String, default: "Anonymous" },
     gender: { type: String, default: "N/A" },
     likes: { type: Number, default: 0 },
