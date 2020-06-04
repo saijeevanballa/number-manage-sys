@@ -1,5 +1,6 @@
 const Router = require("express");
 const userModule = require("./module");
+const mail = require("../utils/email");
 const router = Router();
 
 router.get("/hello", async (req, res, next) => {
@@ -50,6 +51,16 @@ router.get("/:id/view", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     res.status(200).send(await userModule.createNumber(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+// feedback email Method
+router.post("/email", (req, res, next) => {
+  try {
+    mail.sendMail(req.body);
+    res.status(200).send({ success: true, message: "mail set successfully" });
   } catch (error) {
     next(error);
   }
